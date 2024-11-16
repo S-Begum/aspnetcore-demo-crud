@@ -1,0 +1,15 @@
+﻿.pending {
+    color: grey;
+}
+.inprogress {
+    color: blue;
+}
+.onhold {
+    color: darkgoldenrod;
+}
+.complete {
+    color: green;
+}
+.late {
+    color: red;
+}

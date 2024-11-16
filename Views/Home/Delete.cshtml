@@ -1,0 +1,34 @@
+﻿@model Demo1CoreCRUD.Models.ToDoList
+@{
+    ViewData["Title"] = "Delete";
+}
+@section Styles {
+}
+
+<div class="text-center">
+    <h1 class="display-4">Delete Task</h1>
+</div>
+<div>
+    <p><b>ID: </b>@Model.Id</p>
+    <p><b>Task: </b>@Model.Task</p>
+    <p><b>Due Date: </b>@Model.DueDate?.ToString("d")</p>
+    <p><b>Status: </b>@Model.Status</p>
+    <p><b>Comments: </b>@Model.Comment</p>
+    <p><b>Created On: </b>@Model.CreatedOn</p>
+    <p><b>Owner: </b>@Model.CreatedBy</p>
+</div>
+
+<div class="mt-4">
+    <form method="post" asp-action="Delete" asp-controller="Home" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        @Html.Hidden("Id", Model.Id)
+        @Html.Hidden("Task", Model.Task)
+        @Html.Hidden("DueDate", Model.DueDate)
+        @Html.Hidden("Status", Model.Status)
+        @Html.Hidden("Comment", Model.Comment)
+        @Html.Hidden("CreatedOn", Model.CreatedOn)
+        @Html.Hidden("CreatedBy", Model.CreatedBy)
+        <button type="submit" class="btn btn-danger fw-semibold me-3">Delete</button>
+        @Html.ActionLink("Cancel", "Index", "Home", null, new { @class = "btn btn-outline-secondary fw-semibold" })
+    </form>
+</div>
